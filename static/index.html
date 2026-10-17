@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Text Summarizer</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="top">
+  <h1>Text Summarizer</h1>
+  <p>Paste a long article. Get back the sentences that matter, highlighted in the original.</p>
+</header>
+
+<main class="layout">
+  <section class="work">
+    <div class="panel">
+      <label for="text" class="lbl">Your text</label>
+      <textarea id="text" placeholder="Paste an article, essay or report here (at least 30 words)…"></textarea>
+      <div class="row">
+        <label class="btn ghost" for="file">Open .txt file</label>
+        <input type="file" id="file" accept=".txt,text/plain" hidden>
+        <button class="btn ghost" id="clear" type="button">Clear</button>
+        <span id="count" class="muted">0 words</span>
+      </div>
+      <div class="row slider">
+        <label for="ratio">Summary length: <strong id="ratioVal">30%</strong> of the sentences</label>
+        <input type="range" id="ratio" min="10" max="70" step="5" value="30">
+      </div>
+      <button class="btn primary" id="go" type="button">Summarize</button>
+      <p id="error" class="error" role="alert" hidden></p>
+    </div>
+
+    <div class="panel" id="result" hidden>
+      <div class="rhead">
+        <h2>Summary</h2>
+        <button class="btn ghost small" id="copy" type="button">Copy</button>
+      </div>
+      <p id="summary" class="summary"></p>
+      <p id="stats" class="muted"></p>
+      <h3>Original, with kept sentences highlighted</h3>
+      <div id="original" class="original"></div>
+    </div>
+  </section>
+
+  <aside class="panel history">
+    <div class="rhead">
+      <h2>History</h2>
+      <button class="btn ghost small" id="clearAll" type="button">Delete all</button>
+    </div>
+    <ul id="list"></ul>
+    <p id="empty" class="muted">Nothing saved yet. Summaries you make appear here.</p>
+  </aside>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
